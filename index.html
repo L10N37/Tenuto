@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Who's That?</title>
+</head>
+
+<body class="flex-column min-100-vh">
+  <header class="hero">
+    <h1 class="app-title">
+     Who's That?
+    </h1>
+    <p>Search up any artist for their top 10 songs with a link to their youtube channel
+    </p>
+  </header>
+
+
+  <main class="flex-row justify-space-between">
+    <div class="col-12 col-md-4">
+
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search Artists</h3>
+        <form id="user-form" class="card-body">
+          <label class="form-label" for="username">Artist</label>
+          <input name="artist" id="artistSearch" type="text" autofocus="true" class="form-input" />
+          <button id= "getArtistsButton" type="submit" class="btn">Get artists</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-8">
+      <h2 class="subtitle">Showing Artists songs: <span id="artists-songs"></span></h2>
+      <div id="repos-container" class="list-group"></div>
+    </div>
+  </main>
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
