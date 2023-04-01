@@ -41,7 +41,12 @@
         console.log (data.artists.items[0].name + "\n" + data.artists.items[0].id);
     }
 
-
+    const getTop10 = async (token,searchQuery) => { 
+        const result = await fetch('https://api.spotify.com/v1/artists/'+getArtistId+'/top-tracks', {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + token}
+        });
+    }
 
     // Click event listener on 'get artists' button
     document.getElementById("getArtistsButton").addEventListener("click", function(event) {
