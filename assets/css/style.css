@@ -22,6 +22,17 @@
     font-size: 16px;
   }
   
+  img, bandName   {
+    margin: 20px auto;
+    padding: 1%;
+    border-radius: 50px;
+    font-weight: bolder;
+    font-size: 36px;
+    text-align:center;
+  }
+
+ 
+
   h1,
   h2,
   h3,
@@ -39,12 +50,6 @@
     width: 94%;
   }
   
-  bandName{
-color: red;
-font-weight: bolder;
-font-size: 36px;
-text-align:center;
-  }
 
   p {
     font-size: 1.2rem;
