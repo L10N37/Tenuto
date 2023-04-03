@@ -19,7 +19,6 @@
             body: 'grant_type=client_credentials'
         });
 
-
         const data = await result.json();
         let token= (data.access_token);
         console.log("temporary token: " + token);
@@ -33,19 +32,26 @@
             method: 'GET',
             headers: { 'Authorization' : 'Bearer ' + token}
         });
-
         const data = await result.json();
         console.log("Here's the returned object");
         console.log(data);
         console.log("Here's the first results (element 0) artist name & ID:");
         console.log (data.artists.items[0].name + "\n" + data.artists.items[0].id);
+        let artistID = data.artists.items[0].id;
+        let artistImage = data.artists.items[0].images[2].url;
+        console.log(artistImage);
+        getTop10(token,artistID);
+        
     }
 
-    const getTop10 = async (token,searchQuery) => { 
-        const result = await fetch('https://api.spotify.com/v1/artists/'+getArtistId+'/top-tracks', {
+    const getTop10 = async (token,artistID) => { 
+        const result = await fetch('https://api.spotify.com/v1/artists/'+artistID+'/top-tracks?market=AU', {
             method: 'GET',
             headers: { 'Authorization' : 'Bearer ' + token}
         });
+        const data = await result.json();
+        let top10tracks = data.tracks;
+        console.log(top10tracks);
     }
 
     // Click event listener on 'get artists' button
