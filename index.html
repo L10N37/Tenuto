@@ -32,12 +32,25 @@
       </div>
     </div>
 
+    <div class="card" id="artShort">
+      <h3 class="card-header text-uppercase">My Artists</h3>
+  <form class="artist-form">
+    <label class="form-label">Favorite List</label>
+        <input type="text" class="artist-input" placeholder="Add artist to shortlist">
+        <button type="submit" class="btn">Add</button>
+      </form>
+  <ul class="artist-items">
+      </ul>
+    </div>
+
+
     <div class="col-12 col-md-8">
       <h2 class="subtitle">Showing Artists songs: <span id="artists-songs"></span></h2>
       <div id="repos-container" class="list-group"></div>
     </div>
   </main>
   <script src="assets/js/script.js"></script>
+  <script src="assets/js/shortlist.js"></script>
 </body>
 
 </html>

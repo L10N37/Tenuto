@@ -46,9 +46,11 @@
     font-size: 1.3rem;
     text-decoration: none;
     padding: 6px 5px;
-    width: 100%;
+    width: 95%;
     display: block;
     margin: 5px 0;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: var(--border-radius);
     color: var(--primary);
     border: none;
@@ -152,6 +154,7 @@
     margin: 0 0 20px 0;
     border: 3px solid var(--dark);
     border-radius: var(--border-radius);
+    align-items: center;
   }
   
   .card-header {
@@ -186,6 +189,42 @@
     border-radius: var(--border-radius);
   }
   
+  .form-label,
+  .artist-input,
+  .form-textarea {
+    display: block;
+  }
+  
+  .form-label {
+    font-size: 1.1rem;
+    margin: 0 0 0 5px;
+  }
+
+
+
+  #artShort {
+    width: 33%;
+    margin: 0 0 20px;
+    font-size: 1.2rem;
+    border: 2px solid var(--light-dark);
+    border-radius: var(--border-radius);
+    display: block;
+  }
+
+  .artist-input {
+    width: 95%;
+    padding: 3%;
+    margin: 5px 0;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.2rem;
+    border: 2px solid var(--light-dark);
+    border-radius: var(--border-radius);
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+
   /* HEIGHT / WIDTH UTILS */
   .min-100-vh {
     min-height: 100vh;
