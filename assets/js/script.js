@@ -44,9 +44,12 @@
 
         let artistName = data.artists.items[0].name;
 
-
+        if (ifExistsRemove) {
+            ifExistsRemove.parentNode.removeChild(ifExistsRemove);
+        }
 
         let insertArtistImage= document.createElement("div");
+            insertArtistImage.id= "insertArtistImage";
             document.body.appendChild(insertArtistImage);
                 insertArtistImage.innerHTML = "<bandName>"+artistName+"</bandName>"+ "<br>" +"<img src="+ artistImage+ ">"  ;
            
