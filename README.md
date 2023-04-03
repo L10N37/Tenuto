@@ -24,7 +24,6 @@
   <img src=assets/images/Screenshot.png>
 </p>
 
-## Live Application
 <br />
  
 [Application Link](https://l10n37.github.io/team-project-/)
