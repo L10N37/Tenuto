@@ -52,13 +52,16 @@
            
             let top10songs = [];
             let top10albums = [];
+            let top10samples = [];
             console.log(top10);
            // top 10 song retrieval and storage
            for (let i = 0; i < 10; i++) {
             top10songs.push(top10[i].name);
             top10albums[i] = top10[i].album.name;
+            top10samples[i]= top10[i].preview_url;
         }   
         console.log(top10albums+ "\n\n" + top10songs);
+        console.log(top10samples)
 
     }
 
