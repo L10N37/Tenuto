@@ -41,6 +41,13 @@
         let artistImage = data.artists.items[0].images[2].url;
         console.log(artistImage);
         getTop10(token,artistID);
+
+        let artistName = data.artists.items[0].name;
+
+        let insertArtistImage= document.createElement("div");
+            document.body.appendChild(insertArtistImage);
+                insertArtistImage.innerHTML = "<img src="+ artistImage+ ">" + "<br>" + "<bandName>"+artistName+"</bandName>";
+            
         
     }
 
@@ -52,6 +59,11 @@
         const data = await result.json();
         let top10tracks = data.tracks;
         console.log(top10tracks);
+
+       
+           
+
+
     }
 
     // Click event listener on 'get artists' button

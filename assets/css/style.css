@@ -11,6 +11,7 @@
     box-sizing: border-box;
   }
   
+
   body {
     background-color: var(--primary);
     margin: 0;
@@ -38,6 +39,13 @@
     width: 94%;
   }
   
+  bandName{
+color: red;
+font-weight: bolder;
+font-size: 36px;
+text-align:center;
+  }
+
   p {
     font-size: 1.2rem;
   }
