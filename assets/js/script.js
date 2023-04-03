@@ -1,4 +1,4 @@
-    /*
+  /*
     1: get spotify temp token via API call
     2: retrieve artist ID via API call 
     3: pass the artist ID through the API to receive artists top 10 tracks
@@ -38,19 +38,32 @@
         console.log("Here's the first results (element 0) artist name & ID:");
         console.log (data.artists.items[0].name + "\n" + data.artists.items[0].id);
         let artistID = data.artists.items[0].id;
-        let artistImage = data.artists.items[0].images[2].url;
+        let artistImage = data.artists.items[0].images[1].url;
         console.log(artistImage);
-        getTop10(token,artistID);
+        const top10= await getTop10(token,artistID);
 
         let artistName = data.artists.items[0].name;
+
+
 
         let insertArtistImage= document.createElement("div");
             document.body.appendChild(insertArtistImage);
                 insertArtistImage.innerHTML = "<img src="+ artistImage+ ">" + "<br>" + "<bandName>"+artistName+"</bandName>";
-            
-        
+           
+            let top10songs = [];
+            let top10albums = [];
+            console.log(top10);
+           // top 10 song retrieval and storage
+           for (let i = 0; i < 10; i++) {
+            top10songs.push(top10[i].name);
+            top10albums[i] = top10[i].album.name;
+        }   
+        console.log(top10albums+ "\n\n" + top10songs);
+
     }
 
+
+    
     const getTop10 = async (token,artistID) => { 
         const result = await fetch('https://api.spotify.com/v1/artists/'+artistID+'/top-tracks?market=AU', {
             method: 'GET',
@@ -59,11 +72,7 @@
         const data = await result.json();
         let top10tracks = data.tracks;
         console.log(top10tracks);
-
-       
-           
-
-
+        return top10tracks;
     }
 
     // Click event listener on 'get artists' button
@@ -74,8 +83,4 @@
     // prevent a refresh
     event.preventDefault();
 })
-
-
-
-
  
