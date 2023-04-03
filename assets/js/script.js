@@ -48,7 +48,7 @@
 
         let insertArtistImage= document.createElement("div");
             document.body.appendChild(insertArtistImage);
-                insertArtistImage.innerHTML = "<img src="+ artistImage+ ">" + "<br>" + "<bandName>"+artistName+"</bandName>";
+                insertArtistImage.innerHTML = "<bandName>"+artistName+"</bandName>"+ "<br>" +"<img src="+ artistImage+ ">"  ;
            
             let top10songs = [];
             let top10albums = [];
