@@ -48,7 +48,7 @@
 
         let insertArtistImage= document.createElement("div");
             document.body.appendChild(insertArtistImage);
-                insertArtistImage.innerHTML = "<img src="+ artistImage+ ">" + "<br>" + "<bandName>"+artistName+"</bandName>";
+                //insertArtistImage.innerHTML = "<img src="+ artistImage+ ">" + "<br>" + "<bandName>"+artistName+"</bandName>";
            
             let top10songs = [];
             let top10albums = [];
@@ -61,8 +61,13 @@
             top10samples[i]= top10[i].preview_url;
         }   
         console.log(top10albums+ "\n\n" + top10songs);
-        console.log(top10samples)
 
+        insertArtistImage.innerHTML = "<img src="+ artistImage+ ">" + "<br>" + "<bandName>"+artistName+"</bandName>" +
+        
+        "<audio controls>" +
+        "<source src=" + top10samples[0] + "/>" +
+        "</audio>"
+        
     }
 
 
