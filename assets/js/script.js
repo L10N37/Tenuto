@@ -111,13 +111,13 @@
         let imgStart = "<img src="
             let imgEnd = ">";
                 let imgComplete = [];
-        // Album release date formatting/ HTML stuff -> styling required
+        // Album release date formatting/ HTML stuff
         let dateStart = "Released: ";
             let dateComplete = [];
-        // Album name formatting/ HTML stuff -> styling required
+        // Album name formatting/ HTML stuff
         let albumNameStart = "Album: ";
             let albumNameComplete = [];
-        // Track name formatting / HTML stuff -> styling required
+        // Track name formatting / HTML stuff
         let trackNameStart = "";
             let trackNameComplete = [];
         
