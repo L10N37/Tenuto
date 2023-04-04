@@ -109,24 +109,15 @@
         let trackNameStart = "Track Name: ";
             let trackNameComplete = [];
         
-        // this doesn't work as a for loop usually would, we passed the value of i individually in 10 function calls
-        for (i= 0; i < 10; i++) {
-
             sampleComplete[i] = sampleStart + top10InfoFormatted.sample[i] + sampleEnd + "<br>";
                 imgComplete[i] = imgStart+ top10InfoFormatted.artwork[i].url + imgEnd + "<br>";
                     albumNameComplete[i] = albumNameStart + top10InfoFormatted.album[i] + "<br>";
                         dateComplete[i] = dateStart + top10InfoFormatted.year[i] + "<br>";
-                            trackNameComplete = trackNameStart + top10InfoFormatted.song[i] + "<br>";
-
-                                // Change the order of the formatting on the front end here with the return
-                                return imgComplete+albumNameComplete+dateComplete+trackNameComplete+sampleComplete;
+                            trackNameComplete[i] = trackNameStart + top10InfoFormatted.song[i] + "<br>";
+                                
+                                return imgComplete[i]+trackNameComplete[i]+ albumNameComplete[i] + dateComplete[i]+ sampleComplete[i];
         }
-        console.log(sampleComplete);
-        console.log(imgComplete);
-        // testing only, returns everything without order   //
-        //return sampleComplete+imgComplete+albumNameComplete+dateComplete+trackNameComplete;
-        //                                                  //
-    }
+
 
     const getTop10 = async (token,artistID) => {
         const result = await fetch('https://api.spotify.com/v1/artists/'+artistID+'/top-tracks?market=AU', {
