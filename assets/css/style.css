@@ -11,9 +11,6 @@
     box-sizing: border-box;
   }
   
-  .top10boxes{
-    /* styling stuff needed here */
-  }
 
   body {
     background-color: var(--primary);
@@ -25,7 +22,7 @@
     font-size: 16px;
   }
   
-  img, bandName   {
+ #insertArtistImage   {
     margin: 20px auto;
     padding: 1%;
     border-radius: 50px;
@@ -47,8 +44,12 @@
     color: var(--dark);
     line-height: 1.25;
   }
+
+  h3 {
+    font-size: 1.2rem;
+  }
   
-  main {
+  article {
     margin: 20px auto;
     width: 94%;
   }
@@ -183,6 +184,7 @@
   .card-body {
     padding: 2.5%;
   }
+
   
   /* FORM */
   .form-label,
@@ -219,7 +221,7 @@
 
 
   #artShort {
-    width: 33%;
+    width: 100%;
     margin: 0 0 20px;
     font-size: 1.2rem;
     border: 2px solid var(--light-dark);

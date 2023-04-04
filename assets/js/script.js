@@ -3,6 +3,8 @@
     2: retrieve artist ID via API call
     3: pass the artist ID through the API to receive artists top 10 tracks
     */
+    var artist = document.querySelector('#repo-search-term');
+
     const getToken = async (searchQuery) => {
 
         const clientId = '44c2ad3160174fc089bfbe272aa6eb71';
@@ -75,9 +77,8 @@
 
         insertArtistImage.innerHTML =
 
-        "<img src=" + artistImage + ">" + 
-        "<br>" + 
-        "<bandName>"+ artistName +"</bandName>";
+        "Your Artist:"+ "<bandName>"+ artistName +"</bandName>" +
+        "<img src=" + artistImage + ">";
 
 
         let insertTop10= document.createElement("div");

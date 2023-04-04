@@ -18,8 +18,8 @@
     </p>
   </header>
 
-
-  <main class="flex-row justify-space-between" id="artistImage">
+  <main>
+  <article class="flex-row justify-space-between">
     <div class="col-12 col-md-4">
 
       <div class="card">
@@ -30,22 +30,21 @@
           <button id= "getArtistsButton" type="submit" class="btn">Get artists</button>
         </form>
       </div>
+      <div class="card" id="artShort">
+        <h3 class="card-header text-uppercase">My Artists</h3>
+    <form class="artist-form">
+      <label class="form-label">Favorite List</label>
+          <input type="text" class="artist-input" placeholder="Add artist to shortlist">
+          <button type="submit" class="btn">Add</button>
+        </form>
+    <ul class="artist-items">
+        </ul>
+      </div>
     </div>
 
-    <div class="card" id="artShort">
-      <h3 class="card-header text-uppercase">My Artists</h3>
-  <form class="artist-form">
-    <label class="form-label">Favorite List</label>
-        <input type="text" class="artist-input" placeholder="Add artist to shortlist">
-        <button type="submit" class="btn">Add</button>
-      </form>
-  <ul class="artist-items">
-      </ul>
-    </div>
 
+  </article>
 
-    <div class="col-12 col-md-8">
-      <h2 class="subtitle">Showing Artists songs: <span id="artists-songs"></span></h2>
       <div id="repos-container" class="list-group"></div>
     </div>
   </main>
