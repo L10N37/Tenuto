@@ -76,9 +76,9 @@
                 document.body.appendChild(insertArtistImage);
 
         insertArtistImage.innerHTML =
-
-        "Your Artist:"+ "<bandName>"+ artistName +"</bandName>" +
-        "<img src=" + artistImage + ">";
+        "<img class= imageClass src=" + artistImage + ">" + '<br>' +
+        "Your Artist:"+ "<bandName>"+ artistName +"</bandName>";
+        
 
 
         let insertTop10= document.createElement("div");
@@ -92,6 +92,9 @@
     }
 
     function rollOutTop10(top10InfoFormatted, i){
+        // Give it's own child element
+        let childElementStart = "<div class= top10Cards>";
+            let childeElementEnd = "</div>";
         // sample tracks HTML syntax stuff
         let sampleStart = "<audio controls> <source src=";
             let sampleEnd = "/> </audio>";
@@ -115,7 +118,7 @@
                     albumNameComplete[i] = albumNameStart + top10InfoFormatted.album[i] + "<br>";
                         dateComplete[i] = dateStart + top10InfoFormatted.year[i] + "<br>";
                             trackNameComplete[i] = trackNameStart + top10InfoFormatted.song[i] + "<br>";
-                                return imgComplete[i]+trackNameComplete[i]+ albumNameComplete[i] + dateComplete[i]+ sampleComplete[i];
+                                return childElementStart + imgComplete[i]+trackNameComplete[i]+ albumNameComplete[i] + dateComplete[i]+ sampleComplete[i] + childeElementEnd;
         }
 
 

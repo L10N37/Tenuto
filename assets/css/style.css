@@ -90,6 +90,19 @@
     display: inline;
   }
   
+  .imageClass{
+    height: 150px;
+    width: 150px;
+  }
+
+  .top10Boxes{
+  border: red solid;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  }
+
+
   .btn-back {
     border-radius: var(--border-radius);
     color: var(--primary);
