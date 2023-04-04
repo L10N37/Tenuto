@@ -47,7 +47,11 @@
             let ifExistsRemove = document.getElementById('insertArtistImage');
                 if (ifExistsRemove) {
                     ifExistsRemove.parentNode.removeChild(ifExistsRemove);
-                    }
+                    } 
+                        ifExistsRemove = document.querySelector('.top10Boxes');
+                            if (ifExistsRemove) {
+                                ifExistsRemove.parentNode.removeChild(ifExistsRemove);
+                                }
 
         // wrap this all into our own minimal object containing only the information we need
         let top10Info = 
@@ -65,7 +69,7 @@
             top10Info.song.push(top10[i].name);
                 top10Info.album.push(top10[i].album.name);
                     top10Info.sample.push(top10[i].preview_url);
-                        top10Info.artwork.push(top10[i].album.images[2]);
+                        top10Info.artwork.push(top10[i].album.images[1]);
                             top10Info.year.push(top10[i].album.release_date);
                         }   
 
