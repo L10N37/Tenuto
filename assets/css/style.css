@@ -1,9 +1,10 @@
 :root {
-    --primary: #fbf4e0;
+    --primary: #dadbd5;
     --secondary: #000000;
-    --tertiary: #9f5531;
-    --light-dark: #a99382;
-    --dark: #695439;
+    --tertiary: #fe9b36;
+    --light-dark: #e17b33;
+    --dark: #128065;
+    --reddy: #683339;
     --border-radius: 0.3rem;
   }
   
@@ -13,13 +14,27 @@
   
 
   body {
-    background-color: var(--primary);
+    background-color: var(--reddy);
     margin: 0;
     padding: 0;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     color: var(--dark);
     line-height: 1.5;
     font-size: 16px;
+  }
+
+  .card-body {
+    background-color: var(--primary);
+  }
+
+  .artist-items {
+    background-color: var(--primary);
+    margin: 0;
+    list-style: none;
+  }
+
+  li.item {
+    padding-top: 10px;
   }
   
  #insertArtistImage   {
@@ -39,6 +54,7 @@
     font-weight: bolder;
     font-size: 25px;
     text-align:center;
+    background-color: var(--dark);
  }
 
  
@@ -107,6 +123,10 @@
     display: inline;
   }
   
+button.delete-button {
+  background-color: var(--primary);
+border: none;
+font-size: 20px ;}
 
 
   .top10Boxes{
@@ -293,7 +313,8 @@
     font-weight: bold;
     font-size: 15px;
     text-align:center;
-    background-color: #0c4153;
+    background-color: var(--dark);
+    color: #000000;
     
  }
 
