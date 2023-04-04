@@ -11,6 +11,9 @@
     box-sizing: border-box;
   }
   
+  .top10boxes{
+    /* styling stuff needed here */
+  }
 
   body {
     background-color: var(--primary);
