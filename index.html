@@ -9,13 +9,17 @@
   <title>Who's That?</title>
 </head>
 
-<body class="flex-column min-100-vh">
+<body>
   <header class="hero">
+     <div class="gif">
+    <iframe src="https://giphy.com/embed/l41Ym9sB9yaIsUWpa" width="300" frameBorder="0"></iframe><p><a href="https://giphy.com/gifs/robot-vinyl-dance-l41Ym9sB9yaIsUWpa"></a></p>
+    </div>
     <h1 class="app-title">
      Who's That?
     </h1>
-    <p>Search up any artist for their top 10 songs with a link to their youtube channel
+    <p>Stuck trying to figure out the difference between The Weekend and Taking Back Sunday? Know all about Dua Lipa but a stranger to Dolly Parton? Search below to see your new favourite artists top 10 tracks on Spotify.
     </p>
+   
   </header>
 
   <main>
@@ -30,26 +34,29 @@
           <button id= "getArtistsButton" type="submit" class="btn">Get artists</button>
         </form>
       </div>
-      <div class="card" id="artShort">
+      <div class="card" >
         <h3 class="card-header text-uppercase">My Artists</h3>
-    <form class="artist-form">
+    <form id="artist-form" class="card-body">
       <label class="form-label">Favorite List</label>
-          <input type="text" class="artist-input" placeholder="Add artist to shortlist">
+          <input type="text" id="artist-input" class="form-input" placeholder="Add artist to shortlist">
           <button type="submit" class="btn">Add</button>
         </form>
     <ul class="artist-items">
         </ul>
       </div>
     </div>
-
+    <div class="col-12 col-md-8" id="cardlist">
+      <div id="TOP10"></div>
+    </div>
 
   </article>
 
       <div id="repos-container" class="list-group"></div>
     </div>
   </main>
+  
   <script src="assets/js/script.js"></script>
   <script src="assets/js/shortlist.js"></script>
 </body>
-
+<footer> Built by Lionel, Michael & Jake, powered by Spotify API</footer>
 </html>

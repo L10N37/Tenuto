@@ -48,6 +48,10 @@
                 if (ifExistsRemove) {
                     ifExistsRemove.parentNode.removeChild(ifExistsRemove);
                     }
+                    ifExistsRemove = document.querySelector('.top10Boxes');
+                            if (ifExistsRemove) {
+                                ifExistsRemove.parentNode.removeChild(ifExistsRemove);
+                                }
 
         // wrap this all into our own minimal object containing only the information we need
         let top10Info = 
@@ -65,7 +69,7 @@
             top10Info.song.push(top10[i].name);
                 top10Info.album.push(top10[i].album.name);
                     top10Info.sample.push(top10[i].preview_url);
-                        top10Info.artwork.push(top10[i].album.images[2]);
+                        top10Info.artwork.push(top10[i].album.images[1]);
                             top10Info.year.push(top10[i].album.release_date);
                         }   
 
@@ -73,17 +77,21 @@
 
         let insertArtistImage= document.createElement("div");
             insertArtistImage.id= "insertArtistImage";
-                document.body.appendChild(insertArtistImage);
+                var artistinfo= document.getElementById("TOP10")
+                artistinfo.appendChild(insertArtistImage);
 
         insertArtistImage.innerHTML =
         "<img class= imageClass src=" + artistImage + ">" + '<br>' +
-        "Your Artist:"+ "<bandName>"+ artistName +"</bandName>";
+        "Your Artist: "+ "<bandName>"+ artistName +"</bandName>";
         
 
 
         let insertTop10= document.createElement("div");
             insertTop10.className= "top10Boxes";
                 document.body.appendChild(insertTop10);
+                var cardsetup= document.getElementById("cardlist")
+                cardsetup.appendChild(insertTop10);
+
 
         // send function top 10 object, function returns it with formatting
         insertTop10.innerHTML = rollOutTop10(top10Info,0) + rollOutTop10(top10Info,1) + rollOutTop10(top10Info,2) + rollOutTop10(top10Info,3) +
@@ -104,13 +112,13 @@
             let imgEnd = ">";
                 let imgComplete = [];
         // Album release date formatting/ HTML stuff -> styling required
-        let dateStart = "Album Release Date: ";
+        let dateStart = "Released: ";
             let dateComplete = [];
         // Album name formatting/ HTML stuff -> styling required
-        let albumNameStart = "Album Title: ";
+        let albumNameStart = "Album: ";
             let albumNameComplete = [];
         // Track name formatting / HTML stuff -> styling required
-        let trackNameStart = "Track Name: ";
+        let trackNameStart = "";
             let trackNameComplete = [];
         
             sampleComplete[i] = sampleStart + top10InfoFormatted.sample[i] + sampleEnd + "<br>";

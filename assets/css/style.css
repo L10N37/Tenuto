@@ -1,9 +1,9 @@
 :root {
-    --primary: #ccdad1;
+    --primary: #fbf4e0;
     --secondary: #000000;
-    --tertiary: #6d3e94;
-    --light-dark: #69107a;
-    --dark: #1a097e;
+    --tertiary: #9f5531;
+    --light-dark: #a99382;
+    --dark: #695439;
     --border-radius: 0.3rem;
   }
   
@@ -59,6 +59,12 @@
     font-size: 1.2rem;
   }
   
+.gif {
+    float: right;
+    float: top;
+    border-radius: 25%;
+}
+
   .btn {
     font-size: 1.3rem;
     text-decoration: none;
@@ -68,6 +74,7 @@
     margin: 5px 0;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 10px;
     border-radius: var(--border-radius);
     color: var(--primary);
     border: none;
@@ -90,13 +97,9 @@
     display: inline;
   }
   
-  .imageClass{
-    height: 150px;
-    width: 150px;
-  }
+
 
   .top10Boxes{
-  border: red solid;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
@@ -253,6 +256,7 @@
     border-radius: var(--border-radius);
     margin-left: 5px;
     margin-right: 5px;
+    margin-bottom: 5px ;
   }
 
 
@@ -270,6 +274,26 @@
     text-transform: uppercase;
   }
   
+  .top10Cards{
+    margin: 20px auto;
+    padding: 25px;
+    padding-bottom: 10px;
+    border: gray solid;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 15px;
+    text-align:center;
+    background-color: #0c4153;
+    
+ }
+
+ footer {position: sticky;
+  left: 20px;
+  text-align: center;
+  color: #dadbd5;
+  font-size: smaller;
+  background-color: var(--dark);
+}
   /* FLEX CONTENT */
   .flex-row {
     display: flex;

@@ -1,6 +1,6 @@
 
-const artistShortlistForm = document.querySelector('.artist-form');
-const artistShortlistInput = document.querySelector('.artist-input');
+const artistShortlistForm = document.querySelector('#artist-form');
+const artistShortlistInput = document.querySelector('#artist-input');
 const artistShortlist = document.querySelector('.artist-items');
 let artistName = [];
 artistShortlistForm.addEventListener('submit', function(event) {
