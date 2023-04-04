@@ -31,6 +31,16 @@
     text-align:center;
   }
 
+ .top10Cards{
+    margin: 20px auto;
+    padding: 1%;
+    border: gray solid;
+    border-radius: 50px;
+    font-weight: bolder;
+    font-size: 25px;
+    text-align:center;
+ }
+
  
 
   h1,

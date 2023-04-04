@@ -48,10 +48,6 @@
                 if (ifExistsRemove) {
                     ifExistsRemove.parentNode.removeChild(ifExistsRemove);
                     }
-                    ifExistsRemove = document.querySelector('.top10Boxes');
-                            if (ifExistsRemove) {
-                                ifExistsRemove.parentNode.removeChild(ifExistsRemove);
-                                }
 
         // wrap this all into our own minimal object containing only the information we need
         let top10Info = 
