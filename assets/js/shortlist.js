@@ -37,7 +37,7 @@ function renderartistName(artistName) {
     }
 li.innerHTML = `
       ${item.name}
-      <button class="delete-button">X</button>
+      <button class="delete-button">🗑️</button>
     `;
     artistShortlist.append(li);
   });

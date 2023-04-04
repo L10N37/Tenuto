@@ -107,14 +107,11 @@
     display: inline;
   }
   
-
-
   .top10Boxes{
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
   }
-
 
   .btn-back {
     border-radius: var(--border-radius);
@@ -297,13 +294,23 @@
     
  }
 
- footer {position: sticky;
-  left: 20px;
+ button.delete-button {
+  background-color: var(--primary);
+border: none;
+font-size: 20px ;
+}
+
+footer {
+  font-size: smaller;
   text-align: center;
   color: #dadbd5;
-  font-size: smaller;
   background-color: var(--dark);
+  justify-content: space-between;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
+
   /* FLEX CONTENT */
   .flex-row {
     display: flex;
