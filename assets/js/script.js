@@ -95,7 +95,7 @@
         let sampleStart = "<audio controls> <source src=";
             let sampleEnd = "/> </audio>";
                 let sampleComplete =[];
-        // album artwork img HTML syntax stuff -> maybe we can specify all images be a set size in CSS for this, you could add a class or ID here
+        // album artwork img HTML syntax stuff -> these are a set size unlike the band / artist photo, no issue here
         let imgStart = "<img src="
             let imgEnd = ">";
                 let imgComplete = [];
@@ -114,7 +114,6 @@
                     albumNameComplete[i] = albumNameStart + top10InfoFormatted.album[i] + "<br>";
                         dateComplete[i] = dateStart + top10InfoFormatted.year[i] + "<br>";
                             trackNameComplete[i] = trackNameStart + top10InfoFormatted.song[i] + "<br>";
-                                
                                 return imgComplete[i]+trackNameComplete[i]+ albumNameComplete[i] + dateComplete[i]+ sampleComplete[i];
         }
 
