@@ -79,9 +79,9 @@
                                                     let searchBox = document.querySelector("input");
                                                     let altSearchValue = document.getElementById(arrayOfID[i]).innerText;
                                                     // pass value to search box
-                                                    searchBox.value = altSearchValue.toLowerCase() ;
-                                                    // or search directly
-                                                    //getArtistId(token, document.getElementById(arrayOfID[i]).innerText.toLowerCase());
+                                                    //searchBox.value = altSearchValue.toLowerCase() ;
+                                                    //or search directly
+                                                    getArtistId(token, document.getElementById(arrayOfID[i]).innerText.toLowerCase());
                                                 })  
                                             }
                                 
