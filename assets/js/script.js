@@ -80,8 +80,14 @@
         console.log("getTop10() Function Object");
         let top10 = data;
         console.log(top10);
+        
+        // fix implemented here for artist that don't have an image i.e. 'pinkie pie' which would cause a crash/ page reset
+        let artistImage;  
+        if(getArtistIdObject.artists.items[artistIndex].images.length >0){
+        artistImage=  getArtistIdObject.artists.items[artistIndex].images[1].url;
+        }
+        else artistImage = 'https://github.com/L10N37/Tenuto/tree/main/assets/images/noImage.png';
 
-        let artistImage = getArtistIdObject.artists.items[artistIndex].images[1].url;
         console.log(artistImage);
 
         // store information we need into our own minimal object from the fetched object
