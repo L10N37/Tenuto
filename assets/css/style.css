@@ -48,8 +48,11 @@
     text-align:center;
  }
 
-div[id^='alt']:hover{
+p[id^='alt']:hover{
   background-color:aqua;
+  font-size: 120%;
+  font-weight: bolder;
+  transition-duration: 500ms;
 }
 
   h1,

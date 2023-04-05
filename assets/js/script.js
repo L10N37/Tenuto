@@ -1,8 +1,9 @@
+
 /*
     1: get spotify temp token via API call
     2: retrieve artist ID via API call
     3: pass the artist ID through the API to receive artists top 10 tracks
-    */
+*/
     var artist = document.querySelector('#repo-search-term');
 
     const getToken = async (searchQuery) => {
@@ -42,8 +43,9 @@
                 console.log (data.artists.items[i].name + "\n" + data.artists.items[i].id);
                 artistSearchResults[i] = data.artists.items[i].name;
                 }
-        // removal of old elements in case of multiple search queries
         let artistName = data.artists.items[0].name;
+
+        // removal of old elements in case of multiple search queries
         let ifExistsRemove = document.getElementById('insertArtistImage');
             if (ifExistsRemove) {
                     ifExistsRemove.parentNode.removeChild(ifExistsRemove);
@@ -70,11 +72,17 @@
                                     appendTo.appendChild(insertAlternateSearch);
 
                                     // Click event listeners on alternate search results
-                                    let arrayOfID = ['alt0','alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
-                                    for (let i = 1; i < 10; i++) {
+                                    let arrayOfID = ['alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
+                                    for (let i = 0; i < 10; i++) {
                                         document.getElementById(arrayOfID[i]).addEventListener("click", function(event) {
                                             console.log("clicked: "+ arrayOfID[i]);
-                                                getArtistId(token, document.getElementById(arrayOfID[i]).innerText);
+                                                console.log(document.getElementById(arrayOfID[i]).innerText);
+                                                    let searchBox = document.querySelector("input");
+                                                    let altSearchValue = document.getElementById(arrayOfID[i]).innerText;
+                                                    // pass value to search box
+                                                    searchBox.value = altSearchValue.toLowerCase() ;
+                                                    // or search directly
+                                                    //getArtistId(token, document.getElementById(arrayOfID[i]).innerText.toLowerCase());
                                                 })  
                                             }
                                 
@@ -172,16 +180,16 @@
 
     function otherResults(artistSearchResultsFormatted){
         let SendBackResults=[];
-            let arrayOfID = ['alt0','alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
-                let altStart = "<div id=";
-                    let altEnd = "</div>";
+            let arrayOfID = ['alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
+                let altStart = "<p id=";
+                    let altEnd = "</p>";
 
-        for (let i=1; i < 10; i++) {
-           SendBackResults[i] = altStart + arrayOfID[i] +'>'+ artistSearchResultsFormatted[i] + altEnd;
+        for (let i=0; i < 10; i++) {
+          SendBackResults= SendBackResults.concat(altStart + arrayOfID[i] +'>'+ artistSearchResultsFormatted[i] + altEnd);
         }
-        delete SendBackResults[0];
-        SendBackResults = SendBackResults.join(" ");
-        return SendBackResults;
+
+        console.log("RESULTS!!!!!!:" +SendBackResults);
+        return SendBackResults.join('');
     }
 
     // Click event listener on 'get artists' button
