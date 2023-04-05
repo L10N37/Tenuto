@@ -86,7 +86,7 @@
         if(getArtistIdObject.artists.items[artistIndex].images.length >0){
         artistImage=  getArtistIdObject.artists.items[artistIndex].images[1].url;
         }
-        else artistImage = 'https://github.com/L10N37/Tenuto/tree/main/assets/images/noImage.jpg';
+        else artistImage = 'https://github.com/L10N37/Tenuto/blob/main/assets/images/noImage.jpg?raw=true';
 
         console.log(artistImage);
 
