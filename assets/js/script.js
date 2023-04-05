@@ -72,11 +72,11 @@
                                     // Click event listeners on alternate search results
                                     let arrayOfID = ['alt0','alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
                                     for (let i = 1; i < 10; i++) {
-                                    document.getElementById(arrayOfID[i]).addEventListener("click", function(event) {
-                                    console.log("clicked: "+ arrayOfID[i]);
-                                    getTop10(data.artists.items[i].id);
-                                        })  
-                                    }
+                                        document.getElementById(arrayOfID[i]).addEventListener("click", function(event) {
+                                            console.log("clicked: "+ arrayOfID[i]);
+                                                getArtistId(token, document.getElementById(arrayOfID[i]).innerText);
+                                                })  
+                                            }
                                 
 
         let artistID = data.artists.items[0].id;
