@@ -35,23 +35,44 @@
         const data = await result.json();
             console.log("Here's the returned object");
                 console.log(data);
-                    console.log("Here's the first results (element 0) artist name & ID:");
-                        console.log (data.artists.items[0].name + "\n" + data.artists.items[0].id);
-
-        let artistID = data.artists.items[0].id;
-            let artistImage = data.artists.items[0].images[1].url;
-                console.log(artistImage);
-                    const top10= await getTop10(token,artistID);
-
+        // log 20 artists and their ID's and store the names in a variable
+        let artistSearchResults = []; 
+        console.log("Results: ");
+            for (let i = 0; i< 20; i++) {
+                console.log (data.artists.items[i].name + "\n" + data.artists.items[i].id);
+                artistSearchResults[i] = data.artists.items[i].name;
+                }
+        // removal of old elements in case of multiple search queries
         let artistName = data.artists.items[0].name;
-            let ifExistsRemove = document.getElementById('insertArtistImage');
-                if (ifExistsRemove) {
+        let ifExistsRemove = document.getElementById('insertArtistImage');
+            if (ifExistsRemove) {
                     ifExistsRemove.parentNode.removeChild(ifExistsRemove);
                     }
         ifExistsRemove = document.querySelector('.top10Boxes');
             if (ifExistsRemove) {
                 ifExistsRemove.parentNode.removeChild(ifExistsRemove);
                 }
+        ifExistsRemove = document.querySelector('#didYouMean');
+            if (ifExistsRemove) {
+                    ifExistsRemove.parentNode.removeChild(ifExistsRemove);
+                    }
+
+        // add the results into a 'did you mean?' box under the others on the L/H side
+        let insertAlternateSearch= document.createElement("div");
+            insertAlternateSearch.className= "card";
+                insertAlternateSearch.id= "didYouMean";
+                    let appendTo= document.querySelector(".col-md-4")
+                        insertAlternateSearch.innerHTML=   
+                            "<h3 class="+"card-header text-uppercase"+">Did You Mean?</h3>" +
+                            "<form id="+"artist-form"+"class="+"card-body>" +
+                            "<label class="+"form-label"+">Similar Search Results:</label>"+
+                                otherResults(artistSearchResults);
+                                    appendTo.appendChild(insertAlternateSearch);
+
+        let artistID = data.artists.items[0].id;
+            let artistImage = data.artists.items[0].images[1].url;
+                console.log(artistImage);
+                    const top10= await getTop10(token,artistID);
 
         // wrap this all into our own minimal object containing only the information we need
         let top10Info = 
@@ -129,7 +150,6 @@
                                 return childElementStart + imgComplete[i]+trackNameComplete[i]+ albumNameComplete[i] + dateComplete[i]+ sampleComplete[i] + childeElementEnd;
         }
 
-
     const getTop10 = async (token,artistID) => {
         const result = await fetch('https://api.spotify.com/v1/artists/'+artistID+'/top-tracks?market=AU', {
             method: 'GET',
@@ -139,6 +159,17 @@
         let top10tracks = data.tracks;
         return top10tracks;
     }
+
+    function otherResults(artistSearchResultsFormatted){
+        let SendBackResults=[];
+        for (let i=0; i < 20; i++) {
+           SendBackResults[i] = artistSearchResultsFormatted[i] + "<br>"
+        }
+        delete SendBackResults[0];
+        SendBackResults = SendBackResults.join(" ");
+        return SendBackResults;
+    }
+
     // Click event listener on 'get artists' button
     document.getElementById("getArtistsButton").addEventListener("click", function(event) {
     let searchQuery= document.getElementById("artistSearch").value;
