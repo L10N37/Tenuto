@@ -39,4 +39,4 @@ You are able to search up any artist with there top 10 songs aswell as a sample 
 
 <br />
  
-[Application Link](https://l10n37.github.io/team-project-/)
+[Application Link](https://l10n37.github.io/tenuto/)
