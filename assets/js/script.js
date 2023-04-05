@@ -63,8 +63,8 @@
                 insertAlternateSearch.id= "didYouMean";
                     let appendTo= document.querySelector(".col-md-4")
                         insertAlternateSearch.innerHTML=   
-                            "<h3 class="+"card-header text-uppercase"+">Did You Mean?</h3>" +
-                            "<form id="+"artist-form"+"class="+"card-body>" +
+                            "<h3 class="+"card-header text-uppercase"+">DID YOU MEAN?</h3>" +
+                            "<form id="+"artist-form"+" class="+"card-body>" +
                             "<label class="+"form-label"+">Similar Search Results:</label>"+
                                 otherResults(artistSearchResults);
                                     appendTo.appendChild(insertAlternateSearch);

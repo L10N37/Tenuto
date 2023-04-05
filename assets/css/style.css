@@ -48,8 +48,16 @@
     text-align:center;
  }
 
-div[id^='alt']:hover{
-  background-color:aqua;
+div[id^='alt']:hover{ 
+  cursor: pointer;
+  color: #e17b33;
+
+}
+
+div[id^='alt'] {
+  color: var(--dark);
+  padding-left: 10px;
+  padding-top: 2px;
 }
 
   h1,
@@ -80,7 +88,6 @@ div[id^='alt']:hover{
   
 .gif {
     float: right;
-    float: top;
     border-radius: 25%;
 }
 
@@ -146,7 +153,7 @@ div[id^='alt']:hover{
   }
   
   .hero {
-    padding: 4% 4%;
+    padding: 2% 4%;
     background-color: var(--dark);
     color: var(--primary);
   }
@@ -156,13 +163,14 @@ div[id^='alt']:hover{
   }
   
   .app-title {
-    font-size: 3rem;
+    font-size: 5rem;
     background-color: var(--primary);
     color: var(--dark);
     padding: 0 10px;
     display: inline-block;
     border-radius: var(--border-radius);
     box-shadow: 6px 5px var(--light-dark);
+    margin-bottom: 10px;
   }
   
   .list-group {
@@ -250,7 +258,9 @@ div[id^='alt']:hover{
     margin: 0 0 0 5px;
   }
 
-
+  #id.div {
+    color: red;
+  }
 
   #artShort {
     width: 100%;
@@ -311,6 +321,10 @@ div[id^='alt']:hover{
     font-size: 15px;
     text-align:center;
     background-color: var(--dark);    
+ }
+
+ .top10Cards img {
+  border-radius: 9px;
  }
 
  button.delete-button {
