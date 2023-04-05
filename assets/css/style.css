@@ -1,19 +1,22 @@
 :root {
-    --primary: #fbf4e0;
-    --secondary: #000000;
-    --tertiary: #9f5531;
-    --light-dark: #a99382;
-    --dark: #695439;
-    --border-radius: 0.3rem;
-  }
-  
+  --primary: #dadbd5;
+  --secondary: #000000;
+  --tertiary: #fe9b36;
+  --light-dark: #e17b33;
+  --dark: #128065;
+  --reddy: #683339;
+  --border-radius: 0.3rem;
+}
   * {
     box-sizing: border-box;
   }
   
+  .card {
+    background-color: var(--primary);
+  }
 
   body {
-    background-color: var(--primary);
+    background-color: var(--reddy);
     margin: 0;
     padding: 0;
     font-family: 'IBM Plex Sans', sans-serif;
@@ -22,6 +25,10 @@
     font-size: 16px;
   }
   
+.robot {
+  border-radius: 25px;
+}
+
  #insertArtistImage   {
     margin: 20px auto;
     padding: 1%;
@@ -137,7 +144,7 @@
   }
   
   .hero {
-    padding: 3% 4%;
+    padding: 4% 4%;
     background-color: var(--dark);
     color: var(--primary);
   }
@@ -285,6 +292,12 @@
   width: 300px;
   }
 
+  .imageClass {
+    box-shadow:
+      -50px -50px 0 -40px var(--dark),
+      50px 50px 0 -40px var(--light-dark);
+  }
+
   .top10Cards{
     color: black;
     margin: 20px auto;
@@ -295,15 +308,17 @@
     font-weight: bold;
     font-size: 15px;
     text-align:center;
-    background: rgb(102,121,145);
-    background: radial-gradient(circle, rgba(102,121,145,1) 20%, rgba(148,187,233,1) 51%, rgba(54,52,52,1) 97%);
-    
+    background-color: var(--dark);    
  }
 
  button.delete-button {
   background-color: var(--primary);
   border: none;
   font-size: 20px ;
+}
+
+li {
+  list-style: none;
 }
 
 footer {
