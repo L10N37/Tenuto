@@ -49,7 +49,8 @@
  }
 
 p[id^='alt']:hover{
-  background-color:aqua;
+  color: black;
+  background-color: #128065;
   font-size: 120%;
   font-weight: bolder;
   transition-duration: 500ms;

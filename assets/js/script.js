@@ -183,7 +183,7 @@
                     let altEnd = "</p>";
 
         for (let i=0; i < 10; i++) {
-          SendBackResults= SendBackResults.concat(altStart + arrayOfID[i] +'>'+ artistSearchResultsFormatted[i] + altEnd);
+          SendBackResults= SendBackResults.concat(altStart + arrayOfID[i] +'>'+ artistSearchResultsFormatted[i+1] + altEnd);
         }
 
         return SendBackResults.join('');
