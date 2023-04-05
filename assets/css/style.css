@@ -48,7 +48,9 @@
     text-align:center;
  }
 
- 
+div[id^='alt']:hover{
+  background-color:aqua;
+}
 
   h1,
   h2,

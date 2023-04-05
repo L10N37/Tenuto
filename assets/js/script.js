@@ -69,6 +69,16 @@
                                 otherResults(artistSearchResults);
                                     appendTo.appendChild(insertAlternateSearch);
 
+                                    // Click event listeners on alternate search results
+                                    let arrayOfID = ['alt0','alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
+                                    for (let i = 1; i < 10; i++) {
+                                    document.getElementById(arrayOfID[i]).addEventListener("click", function(event) {
+                                    console.log("clicked: "+ arrayOfID[i] );
+                                    getToken(document.getElementById(arrayOfID[i]).innerText);
+                                        })  
+                                    }
+                                
+
         let artistID = data.artists.items[0].id;
             let artistImage = data.artists.items[0].images[1].url;
                 console.log(artistImage);
@@ -162,8 +172,12 @@
 
     function otherResults(artistSearchResultsFormatted){
         let SendBackResults=[];
-        for (let i=0; i < 20; i++) {
-           SendBackResults[i] = artistSearchResultsFormatted[i] + "<br>"
+            let arrayOfID = ['alt0','alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
+                let altStart = "<div id=";
+                    let altEnd = "</div>";
+
+        for (let i=1; i < 10; i++) {
+           SendBackResults[i] = altStart + arrayOfID[i] +'>'+ artistSearchResultsFormatted[i] + altEnd;
         }
         delete SendBackResults[0];
         SendBackResults = SendBackResults.join(" ");
@@ -177,4 +191,4 @@
     getToken(searchQuery);
     // prevent a refresh
     event.preventDefault();
-})
+    })
