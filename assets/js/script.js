@@ -1,4 +1,3 @@
-
 /*
     1: get spotify temp token via API call
     2: retrieve artist ID via API call
@@ -86,7 +85,6 @@
                                                 })  
                                             }
                                 
-
         let artistID = data.artists.items[0].id;
             let artistImage = data.artists.items[0].images[1].url;
                 console.log(artistImage);
@@ -188,7 +186,6 @@
           SendBackResults= SendBackResults.concat(altStart + arrayOfID[i] +'>'+ artistSearchResultsFormatted[i] + altEnd);
         }
 
-        console.log("RESULTS!!!!!!:" +SendBackResults);
         return SendBackResults.join('');
     }
 
