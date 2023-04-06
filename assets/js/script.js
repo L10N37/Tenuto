@@ -7,8 +7,8 @@
 
     const getToken = async (searchQuery) => {
 
-        const clientId = '44c2ad3160174fc089bfbe272aa6eb71';
-            const clientSecret = '5d75f019233b4757a4de12db7680508c';
+        const clientId = 'a1baf1c660304b15819ec910c76451ce';
+            const clientSecret = '85564cb075734bbea4eb0842e17a07a1';
                 const result = await fetch('https://accounts.spotify.com/api/token', {
 
             method: 'POST',
