@@ -2,7 +2,7 @@
     1: get spotify temp token via API call
     2: retrieve artist ID via API call
     3: pass the artist ID through the API to receive artists top 10 tracks
-    */
+*/
     var artist = document.querySelector('#repo-search-term');
 
     const getToken = async (searchQuery) => {
@@ -35,56 +35,62 @@
         const data = await result.json();
             console.log("Here's the returned object");
                 console.log(data);
-        // log 20 artists and their ID's and store the names in a variable
-        let artistSearchResults = []; 
+        // log 20 artists and their ID's result and store them in their own object, 
+        // the entire object this info came from is also passed to the next function
+        let artistSearchResults = {
+        artist: [],
+        id: []
+        };
+        let getArtistIdObject = data;
         console.log("Results: ");
+
             for (let i = 0; i< 20; i++) {
                 console.log (data.artists.items[i].name + "\n" + data.artists.items[i].id);
-                artistSearchResults[i] = data.artists.items[i].name;
+                artistSearchResults.artist[i] = data.artists.items[i].name;
+                artistSearchResults.id[i] = data.artists.items[i].id;
                 }
-        // removal of old elements in case of multiple search queries
-        let artistName = data.artists.items[0].name;
+                
+        console.log(artistSearchResults);
+        // pass this function an artistIndex of zero, as our search defaults to displaying element 0 object results
+        getTop10(token, artistSearchResults, getArtistIdObject, 0);
+    }
+
+    const getTop10 = async (token, artistSearchResults, getArtistIdObject, artistIndex) => {
+        const result = await fetch('https://api.spotify.com/v1/artists/'+artistSearchResults.id[artistIndex]+'/top-tracks?market=AU', {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + token}
+        });
+
+        // removal of old elements in case of multiple search queries //
         let ifExistsRemove = document.getElementById('insertArtistImage');
-            if (ifExistsRemove) {
-                    ifExistsRemove.parentNode.removeChild(ifExistsRemove);
-                    }
-        ifExistsRemove = document.querySelector('.top10Boxes');
-            if (ifExistsRemove) {
+        if (ifExistsRemove) {
                 ifExistsRemove.parentNode.removeChild(ifExistsRemove);
                 }
+        ifExistsRemove = document.querySelector('.top10Boxes');
+        if (ifExistsRemove) {
+            ifExistsRemove.parentNode.removeChild(ifExistsRemove);
+            }
         ifExistsRemove = document.querySelector('#didYouMean');
-            if (ifExistsRemove) {
-                    ifExistsRemove.parentNode.removeChild(ifExistsRemove);
-                    }
+        if (ifExistsRemove) {
+                ifExistsRemove.parentNode.removeChild(ifExistsRemove);
+            }
+        ///////////////////////////////////////////////////////////////
 
-        // add the results into a 'did you mean?' box under the others on the L/H side
-        let insertAlternateSearch= document.createElement("div");
-            insertAlternateSearch.className= "card";
-                insertAlternateSearch.id= "didYouMean";
-                    let appendTo= document.querySelector(".col-md-4")
-                        insertAlternateSearch.innerHTML=   
-                            "<h3 class="+"card-header text-uppercase"+">DID YOU MEAN?</h3>" +
-                            "<form id="+"artist-form"+" class="+"card-body>" +
-                            "<label class="+"form-label"+">Similar Search Results:</label>"+
-                                otherResults(artistSearchResults);
-                                    appendTo.appendChild(insertAlternateSearch);
+        const data = await result.json();
+        console.log("getTop10() Function Object");
+        let top10 = data;
+        console.log(top10);
+        
+        // fix implemented here for artist that don't have an image i.e. 'pinkie pie' which would cause a crash/ page reset
+        let artistImage;  
+        if(getArtistIdObject.artists.items[artistIndex].images.length >0){
+        artistImage=  getArtistIdObject.artists.items[artistIndex].images[1].url;
+        }
+        else artistImage = 'https://github.com/L10N37/Tenuto/blob/main/assets/images/noImage.jpg?raw=true';
 
-                                    // Click event listeners on alternate search results
-                                    let arrayOfID = ['alt0','alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
-                                    for (let i = 1; i < 10; i++) {
-                                        document.getElementById(arrayOfID[i]).addEventListener("click", function(event) {
-                                            console.log("clicked: "+ arrayOfID[i]);
-                                                getArtistId(token, document.getElementById(arrayOfID[i]).innerText);
-                                                })  
-                                            }
-                                
+        console.log(artistImage);
 
-        let artistID = data.artists.items[0].id;
-            let artistImage = data.artists.items[0].images[1].url;
-                console.log(artistImage);
-                    const top10= await getTop10(token,artistID);
-
-        // wrap this all into our own minimal object containing only the information we need
+        // store information we need into our own minimal object from the fetched object
         let top10Info = 
         {
             song:       [],
@@ -94,40 +100,72 @@
             year:       []
         };
 
-        console.log(top10);
- 
-           for (let i = 0; i < 10; i++) {
-            top10Info.song.push(top10[i].name);
-                top10Info.album.push(top10[i].album.name);
-                    top10Info.sample.push(top10[i].preview_url);
-                        top10Info.artwork.push(top10[i].album.images[1]);
-                            top10Info.year.push(top10[i].album.release_date);
-                        }   
+            // using length of top 10 track length here, not all artists have 10 tracks on spotify, i.e. mikayla jackson has 1
+           for (let i = 0; i < top10.tracks.length ; i++) {
+            top10Info.song.push(top10.tracks[i].name);
+                top10Info.album.push(top10.tracks[i].album.name);
+                    top10Info.sample.push(top10.tracks[i].preview_url);
+                        top10Info.artwork.push(top10.tracks[i].album.images[1]);
+                            top10Info.year.push(top10.tracks[i].album.release_date);
+                            }  
 
         console.log(top10Info);
 
-        let insertArtistImage= document.createElement("div");
-            insertArtistImage.id= "insertArtistImage";
-                var artistinfo= document.getElementById("TOP10")
+        let artistName = artistSearchResults.artist[artistIndex];
+
+     // add the results into a 'did you mean?' box under the others on the L/H side
+     let insertAlternateSearch= document.createElement("div");
+         insertAlternateSearch.className= "card";
+             insertAlternateSearch.id= "didYouMean";
+                 let appendTo= document.querySelector(".col-md-4")
+                     insertAlternateSearch.innerHTML=   
+                         "<h3 class="+"card-header text-uppercase"+">DID YOU MEAN?</h3>" +
+                         "<form id="+"artist-form"+"class="+" card-body>" +
+                         "<label class="+"form-label"+">Similar Search Results:</label>"+
+                             otherResults(artistSearchResults.artist);
+                                 appendTo.appendChild(insertAlternateSearch);
+
+                                 // Click event listeners on alternate search results
+                                 let arrayOfID = ['alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
+                                 for (let i = 0; i < 10; i++) {
+                                     document.getElementById(arrayOfID[i]).addEventListener("click", function(event) {
+                                        // i+1 skips the initial search as we stored the top 20 results including what was searched
+                                         console.log("clicked: "+ arrayOfID[i] +"\n"+ artistSearchResults.artist[i+1] +"\n"+ artistSearchResults.id[i+1]);
+
+                                                 // pass value to search box
+                                                 //let searchBox = document.querySelector("input");
+                                                 //let altSearchValue = document.getElementById(arrayOfID[i]).innerText;
+                                                 // searchBox.value = altSearchValue.toLowerCase() ;
+
+                                                 // or search directly
+                                                 //getArtistId(token, document.getElementById(arrayOfID[i]).innerText.toLowerCase());
+                                                 artistId = artistSearchResults.id[i+1];
+                                                 getTop10(token, artistSearchResults, getArtistIdObject, i+1);
+                                             })  
+                                         }
+ 
+     let insertArtistImage= document.createElement("div");
+         insertArtistImage.id= "insertArtistImage";
+             let artistinfo= document.getElementById("TOP10")
                 artistinfo.appendChild(insertArtistImage);
 
-        insertArtistImage.innerHTML =
-        "<img class= imageClass src=" + artistImage + ">" + '<br>' +
-        "Your Artist: "+ "<bandName>"+ artistName +"</bandName>";
-        
+     insertArtistImage.innerHTML =
+     "<img class= imageClass src=" + artistImage + ">" + '<br>' +
+     "Your Artist: "+ "<bandName>"+ artistName +"</bandName>";
+     
+     let insertTop10= document.createElement("div");
+         insertTop10.className= "top10Boxes";
+             document.body.appendChild(insertTop10);
+             var cardsetup= document.getElementById("cardlist")
+             cardsetup.appendChild(insertTop10);
 
-
-        let insertTop10= document.createElement("div");
-            insertTop10.className= "top10Boxes";
-                document.body.appendChild(insertTop10);
-                var cardsetup= document.getElementById("cardlist")
-                cardsetup.appendChild(insertTop10);
-
-
-        // send function top 10 object, function returns it with formatting
-        insertTop10.innerHTML = rollOutTop10(top10Info,0) + rollOutTop10(top10Info,1) + rollOutTop10(top10Info,2) + rollOutTop10(top10Info,3) +
-        rollOutTop10(top10Info,4) +rollOutTop10(top10Info,5) + rollOutTop10(top10Info,6) + rollOutTop10(top10Info,7) + rollOutTop10(top10Info,8) +
-        rollOutTop10(top10Info,9);
+     let RollOutTopSongsLength =[];
+     for (let i = 0; i < top10.tracks.length; i++) {
+        RollOutTopSongsLength= RollOutTopSongsLength.concat(rollOutTop10(top10Info,i));
+     }
+     console.log(RollOutTopSongsLength.join(' '));
+     // send function top 10 object, function returns it with formatting
+     insertTop10.innerHTML = RollOutTopSongsLength.join(' ');
     }
 
     function rollOutTop10(top10InfoFormatted, i){
@@ -160,28 +198,16 @@
                                 return childElementStart + imgComplete[i]+trackNameComplete[i]+ albumNameComplete[i] + dateComplete[i]+ sampleComplete[i] + childeElementEnd;
         }
 
-    const getTop10 = async (token,artistID) => {
-        const result = await fetch('https://api.spotify.com/v1/artists/'+artistID+'/top-tracks?market=AU', {
-            method: 'GET',
-            headers: { 'Authorization' : 'Bearer ' + token}
-        });
-        const data = await result.json();
-        let top10tracks = data.tracks;
-        return top10tracks;
-    }
-
     function otherResults(artistSearchResultsFormatted){
         let SendBackResults=[];
-            let arrayOfID = ['alt0','alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
-                let altStart = "<div id=";
-                    let altEnd = "</div>";
+            let arrayOfID = ['alt1','alt2','alt3','alt4','alt5','alt6','alt7','alt8','alt9','alt10'];
+                let altStart = "<p id=";
+                    let altEnd = "</p>";
 
-        for (let i=1; i < 10; i++) {
-           SendBackResults[i] = altStart + arrayOfID[i] +'>'+ artistSearchResultsFormatted[i] + altEnd;
+        for (let i=0; i < 10; i++) {
+          SendBackResults= SendBackResults.concat(altStart + arrayOfID[i] +'>'+ artistSearchResultsFormatted[i+1] + altEnd);
         }
-        delete SendBackResults[0];
-        SendBackResults = SendBackResults.join(" ");
-        return SendBackResults;
+        return SendBackResults.join('');
     }
 
     // Click event listener on 'get artists' button
