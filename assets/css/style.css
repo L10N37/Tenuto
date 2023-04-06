@@ -48,14 +48,18 @@
     text-align:center;
  }
 
-p[id^='alt']:hover{
-  color: black;
-  background-color: #128065;
-  font-size: 120%;
-  font-weight: bolder;
-  transition-duration: 500ms;
+ p[id^='alt']:hover { 
+  cursor: pointer;
+  color: #e17b33;
+
 }
 
+p[id^='alt'] {
+  color: var(--dark);
+  padding-left: 10px;
+  padding-top: 2px;
+  font-size: medium;
+}
   h1,
   h2,
   h3,
