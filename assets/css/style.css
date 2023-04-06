@@ -19,7 +19,7 @@
     background-color: var(--reddy);
     margin: 0;
     padding: 0;
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family:'Noto Sans', sans-serif;
     color: var(--dark);
     line-height: 1.5;
     font-size: 16px;
@@ -154,7 +154,8 @@ p[id^='alt'] {
   
   .hero {
     padding: 2% 4%;
-    background-color: var(--dark);
+    background: rgb(18,128,110);
+    background: linear-gradient(68deg, rgba(18,128,110,1) 23%, rgba(17,130,109,1) 49%, rgba(0,153,102,1) 87%);
     color: var(--primary);
   }
   
