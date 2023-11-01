@@ -2,23 +2,10 @@ TENUTO
 
 <br>
 <br>
-Concept:
-The concept of this project was to use the Spotify API to send a request and get a response from the API to show the artist and their top 10 songs. If we had more time, we would also have tried to get the YouTube link to the artists (via the YouTube API).
+For this challenge, we were tasked with choosing an API and learning how to use it. Our group, consisting of three members, selected the Spotify API. The core functionality of the application was developed by me, Lionel Sanderson. I set a personal challenge to avoid using any global variables, and I succeeded. However, another member introduced one at a later stage for reasons that remain unclear. The feature allowing users to shortlist their favorite artists was contributed by Jake. He also added the finishing touches, incorporating various effects and selecting the color schemes. The original README was authored by Michael.
 <br>
 <br>
-Process:
-We used the Spotify API, which allowed us to grab an authentication token every time we pressed the search button. We broke down the tasks/roles of the project to its simple MVP (minimal viable product), which was to get the Spotify API to work (sending a fetch and getting a response from the API), get the search results to show on the screen, as well as getting the images, samples, and album name/title. For assigned roles, we assigned everyone to work on a bit of HTML, CSS, and JavaScript. Some of the challenges we ran into were getting the Spotify API to work from the start due to getting the authorization token from the API, as well as getting the response from the API. We also had challenges with getting the artist name and photo to show up with the relevant info, removing the artist once you searched up a new one, and aligning the album photos with each other so that they don't just go down the page. We succeeded in almost all the challenges but had a few bugs that needed to be ironed out. Other than that, we were able to accomplish almost all of our goals, except for the YouTube API, due to running out of time.
-<br>
-<br>
-Usage:
-If you want to know what an artist's top 10 songs are, you can search up the name of the artist. However, if you try to search up the song of an artist, it won't come up with anything due to it not being an artist in the Spotify API.
-<br>
-<br>
-Features:
-You are able to search up any artist with their top 10 songs as well as a sample if there is one.
-<br>
-<br>
-## Application Screenshot
+The application operates in a series of steps. First, it verifies a legitimate user by sending account credentials; in response, the API issues a temporary token valid upon authentication. This token, along with other variables, is relayed from one function to another and repeatedly sent back to the API for validation with each request. Users can select an artist, which the application then translates from the searched name into the unique Spotify artist ID. Subsequently, the top 10 songs of that artist can be retrieved. If the artist has made preview snippets available, these can also be sampled. Due to Spotify's reliance on IDs instead of names to identify artists, there's a "similar artists" dropdown on the left, this was cappedd to 10 similar artists. This aids users in pinpointing the exact artist they're searching for, especially when artist names can be tricky, such as searching for "pink" when the correct name is "p!nk".
 
 
 <p align="center">
